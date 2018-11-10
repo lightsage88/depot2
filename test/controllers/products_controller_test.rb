@@ -46,4 +46,10 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
+  test "should have an h1 that says 'Products'" do
+    get products_url
+    assert_response :success
+    assert_select 'h1', "Products"
+  end
 end
