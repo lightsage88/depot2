@@ -4,5 +4,6 @@ class StoreController < ApplicationController
   def index
     @products = Product.order(:title)
     puts session[:counter]
+    @visit_counter = session[:counter]
   end
 end

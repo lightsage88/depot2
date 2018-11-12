@@ -12,10 +12,10 @@
   <header class='main'>
     <%= image_tag 'fox_hound.jpg', alt: "High-Tech Special Forces Foxhound" %>
     <h1><%= @page_title %></h1>
-    <% if session[:counter] <= 4 %>
+    <% if @visit_counter && @visit_counter < 4 %>
     <strong>You have been to the store <%= pluralize(session[:counter], 'time', 'times') %> </strong>
     <% else %>
-    <strong><%= session[:counter]%> times and you STILL haven't bought anything? What gives? </strong>
+    <strong><%= @visit_counter %> times and you STILL haven't bought anything? What gives? </strong>
     <% end %>
   </header>
   <section class='content'>
