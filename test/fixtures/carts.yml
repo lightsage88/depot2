@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: {
+ 
+}
 # column: value
 #
-two: {}
+two: {
+ 
+}
 # column: value
+
+
+#TODO: Can't figure out this extra challenge from pg 149!
+#• Write unit tests that add both unique products and duplicate products to a cart. Assert how many products should be in the cart in each instance. Note that you’ll need to modify the fixture to refer to products and carts by name—for example, product: ruby.

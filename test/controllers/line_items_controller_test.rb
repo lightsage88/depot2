@@ -22,9 +22,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
 
-    assert_select 'h2', 'Your Metal Gear Cart'
-    assert_select 'li', "1 \u00D7 Programming Ruby 1.9"
+    assert_select 'h2', 'Your Cart'
+    assert_select 'td', "Programming Ruby 1.9"
   end
+
+  test "should create another line_item of the same thing and have just one item with quantity of 2" do
+    assert_difference('LineItem.count', 1) do
+      post line_items_url, params: { product_id: products(:two).id }
+    end
+  end
+
+
 
   test "should show line_item" do
     get line_item_url(@line_item)
@@ -48,5 +56,14 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to line_items_url
+  end
+
+  test "should create line_item via ajax" do
+    assert_difference("LineItem.count") do
+      post line_items_url, params: {product_id: products(:ruby).id },
+      xhr: true
+    end
+    assert_response :success
+    assert_match /<tr class=\\'line-item-highlight/, @response.body
   end
 end
