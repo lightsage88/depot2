@@ -66,6 +66,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def who_bought
+    @product = Product.find(params[:id])
+    #based on the line above it seems we are going to have to pass
+    #a product_id param in the request to this action
+    @latest_order = @product.orders.order(:updated_at).last
+    #seems like we will be digging through the record of the product
+    #isolated in line 70 to find the last/most recent buyer of that product
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.atom
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
