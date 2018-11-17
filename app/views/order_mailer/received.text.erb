@@ -1,0 +1,13 @@
+Order#received
+
+Dear <%= @order.name %>,
+
+Thank you for your order from the FoxHound Art Gallery.
+
+You ordered the following items:
+
+<%= render @order.line_items %>
+
+We will send you a seperate email when your order ships.
+
+<%= @greeting %>, find me in app/views/order_mailer/received.text.erb
