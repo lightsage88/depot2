@@ -38,9 +38,13 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        OrderMailer.received(@order).deliver_later
+        # OrderMailer.received(@order).deliver_later
+        ChargeOrderJob.perform_later(@order, pay_type_params.to_h)
         format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
+        puts "Notre Dame will win today."
+        puts pay_type_params.to_h
+        puts "And thats all there is to it"
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -74,7 +78,8 @@ class OrdersController < ApplicationController
 
   def pay_type_params
     if order_params[:pay_type] == "Credit Card"
-      #this might need to be "Credit card"...i could be wrong but you heard it here first
+      #this might need to be "Credit card"...
+      #i could be wrong but you heard it here first ;)
       params.require(:order).permit(:credit_card_number, :expiration_date)
     elsif order_params[:pay_type] == "Check"
       params.require(:order).permit(:routing_number, :account_number)
