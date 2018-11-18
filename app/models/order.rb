@@ -49,9 +49,12 @@ class Order < ApplicationRecord
         payment_result = Pago.make_payment(order_id: id,
                                           payment_method: payment_method,
                                           payment_details: payment_details)
-        if payment_result.succeeded?
+        if payment_result.succeeded? == true
+            puts "It was true"
             OrderMailer.received(self).deliver_later
         else
+            puts "payment_result was false in order.rb!"
+            OrderMailer.store_error_mail(self).deliver_later
             raise payment_result.error
         end
     end

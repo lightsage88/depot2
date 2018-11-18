@@ -1,0 +1,16 @@
+<%# Need to fill this one out because the functionalty
+completing because it couldn't find a template to
+send or display regarding an error message. You're
+on the right track though! %>
+
+Order#store_error_mail
+
+Hey, bossman!
+
+We have a problem with <%@order.id%> Something happened
+and now we aren't getting our money. Let's solve, yeah?
+I think it was this order:
+<%=render @order.line_items%>
+
+Let's fix it and then let the customer know it was fixed
+so we can get that new pair of shoes even sooner!! 

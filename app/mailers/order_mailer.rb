@@ -25,4 +25,11 @@ class OrderMailer < ApplicationMailer
 
     mail to: order.email, subject: 'FoxHound Item Shipped'
   end
+
+  def store_error_mail(order)
+    puts "We should get an error mail"
+    @order = order
+    @greeting = "Hey there, Mr. Administrator, we have a problem!"
+    mail to: "adrian.e.rosales@gmail.com", subject: "Houston, we have a problem!"
+  end
 end
