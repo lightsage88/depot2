@@ -42,9 +42,6 @@ class OrdersController < ApplicationController
         ChargeOrderJob.perform_later(@order, pay_type_params.to_h)
         format.html { redirect_to store_index_url, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
-        puts "Notre Dame will win today."
-        puts pay_type_params.to_h
-        puts "And thats all there is to it"
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

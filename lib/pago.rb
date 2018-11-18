@@ -4,7 +4,7 @@ class Pago
     def self.make_payment(order_id:,
                          payment_method:,
                          payment_details:)
-        number_friend = rand(1)
+        number_friend = rand(3)
         puts "your number friend is #{number_friend}"
         case payment_method
         when :check
@@ -25,7 +25,7 @@ class Pago
         sleep 3 unless Rails.env.test?
         Rails.logger.info "Done Processing Payment"
         ###TODO: make the below line be randomly true or false
-        if number_friend == 1
+        if number_friend >= 1
         OpenStruct.new(succeeded?: true)
         else
             OpenStruct.new(succeded?: false)

@@ -5,9 +5,9 @@ on the right track though! %>
 
 Order#store_error_mail
 
-Hey, bossman!
+<%= @greeting %>
 
-We have a problem with <%@order.id%> Something happened
+We have a problem with <%@order%> Something happened
 and now we aren't getting our money. Let's solve, yeah?
 I think it was this order:
 <%=render @order.line_items%>
