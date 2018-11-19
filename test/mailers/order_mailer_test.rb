@@ -19,7 +19,7 @@ class OrderMailerTest < ActionMailer::TestCase
 
   test "store_error_mail" do
     mail = OrderMailer.store_error_mail(orders(:one))
-    assert_equal "Houston, we have a problem!"
+    assert_equal "Houston, we have a problem!", mail.subject
     assert_equal ["adrian.e.rosales@gmail.com"], mail.to
     assert_equal ["depot@example.com"], mail.from
     assert_match "we aren't getting our money", mail.body.encoded
