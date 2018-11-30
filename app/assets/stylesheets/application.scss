@@ -182,3 +182,32 @@ header.main {
         }
     }
 }
+
+nav.logged_in_nav {
+    border-top: solid thin #bfb;
+    padding: 0.354em 0;
+        //This line gets the new navbar and gives it the same
+        //dimensions boundary as the navbar above it, makes it flush w/ the above nav
+    margin-top: 0.354em;
+        //This line sets a distance from the top of the new nav to the others, makes a space
+    input[type="submit"] {
+        //makes the logout button look like a link, so it matches style
+        background: none;
+            //removes the roundedness and the beige color that the button had
+        border: none;
+        color: #bfb;
+            //text will be the same color as the other list items in the new nav's ul
+        font-size: 1em;
+            //text will ahve same size
+        letter-spacing: 0.354em;
+            //spacing too
+        margin: 0;
+        padding: 0;
+            //these make the 'button' flush with the other list items
+        text-transform: uppercase;
+            //makes the 'Logout' become 'LOGOUT'
+    }
+    input[type="submit"]:hover {
+        color: white;
+    }
+}
