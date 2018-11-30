@@ -21,8 +21,8 @@
   </div>
 
   <% if user.password_digest %>
-    <%= form.label :password_digest, 'Current Password' %>
-    <%= form.password_field :password_digest, id: :password_digest, size: 40 %>
+    <label>Current Password</label>
+    <%= password_field_tag :current_password%>
   <% end %>
 
   <div class="field">
