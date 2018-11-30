@@ -9,14 +9,18 @@ Rails.application.routes.draw do
 
 
   resources :users
-  resources :orders
-  resources :line_items
-  resources :carts
   resources :products do
     get :who_bought, on: :member
     end
-  # get 'store/index'
-root "store#index", as: "store_index"
+
+    scope '(:locale)' do  
+      resources :orders
+      resources :line_items
+      resources :carts
+      root 'store#index', as: 'store_index', via: :all
+    end
+  end
+
 
 # Depot2::Application.configure do
 #   config.action_mailer.delivery_method = :smtp
@@ -59,4 +63,4 @@ edit_product_path
 run `rake routes` to see how it all works.
 =end
 
-end
+
