@@ -23,6 +23,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to users_url
   end
 
+  test "should logout user" do
+    logout()
+    get user_url(@user)
+    assert_response :redirect
+  end
+
   test "should show user" do
     get user_url(@user)
     assert_response :success
