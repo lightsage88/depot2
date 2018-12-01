@@ -9,4 +9,12 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     assert_select '.price', /\$[,\d]+\.\d\d/
   end
 
+
+  test "should show our spanish product" do
+    spanish()
+    get store_index_url
+    assert_response :success
+    assert_select 'main ul.catalog li', 1
+  end
+
 end
