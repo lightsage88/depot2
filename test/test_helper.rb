@@ -6,6 +6,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  teardown do
+    I18n.locale = "en"
+  end
 end
 
 class ActionDispatch::IntegrationTest
